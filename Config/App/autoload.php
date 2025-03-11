@@ -1,0 +1,13 @@
+<?php
+spl_autoload_register(function($class){
+    if(file_exists('Config/App/'.$class.'.php')){
+        require_once('Config/App/'.$class.'.php');
+    }
+    if(file_exists('Models/'.$class.'.php')){
+        require_once('Models/'.$class.'.php');
+    }
+    if(file_exists('Config/'.$class.'.php')){
+        require_once('Config/'.$class.'.php');
+    }
+});
+?>

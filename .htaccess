@@ -1,0 +1,11 @@
+#Bloquea el listado de directorios
+Options All -Indexes
+# Opción recomendada para la seguridad
+#Options -Indexes +FollowSymLinks
+# Habilitar mod_rewrite
+RewriteEngine On
+
+# Redirigir todas las solicitudes a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
