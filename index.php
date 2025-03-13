@@ -1,6 +1,8 @@
 <?php
+// Iniciamos la sesión del sistema
+session_start();
+//Cargamos las configuraciones para el sistema
 require_once 'Config/Config.php';
-
 $ruta = !empty($_GET['url']) ? $_GET['url'] : 'Home';
 $array = explode('/',$ruta);
 //echo json_encode($array);

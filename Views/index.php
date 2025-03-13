@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto venta</title>
-</head>
-<body>
-    <ul>
-        <?php foreach($data['usuarios'] as $usuario){?>
-        <li><?php echo $usuario["nick"]; ?></li>
-        <?php } ?>
-    </ul>
-</body>
-</html>
+<?php include_once './Views/templates/header.php'; ?>
+<!-- Page Heading -->
+<h1 class="h3 mb-4 text-gray-800">Home index</h1>
+
+<?php include_once './Views/templates/footer.php'; ?>
