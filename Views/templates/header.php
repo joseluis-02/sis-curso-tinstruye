@@ -22,6 +22,8 @@
     <link href="<?php echo base_url; ?>/Assets/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
     <!-- Datatables bootstrap -->
     <link href="<?php echo base_url; ?>/Assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- Datatables sweetalert2 -->
+    <link href="<?php echo base_url; ?>/Assets/css/sweetalert2.min.css" rel="stylesheet" type="text/css">
     <!-- Espacio dinámico para estilos -->
     <?php
     if (!empty($styles)) {
@@ -67,15 +69,50 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?=base_url;?>/Usuarios" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseAlmacen"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-users"></i>
-                    <span>Usuarios</span>
+                    <i class="fas fa-warehouse"></i>
+                    <span>Almacen</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseAlmacen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Funcionalidades</h6>
-                        <a class="collapse-item" href="<?=base_url;?>/Usuarios">Listar</a>
+                        <a class="collapse-item" href="<?=base_url;?>/Categorias">Categorias</a>
+                        <a class="collapse-item" href="<?=base_url;?>/Medidas">Medidas</a>
+                        <a class="collapse-item" href="<?=base_url;?>/Productos">Productos</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseSeguridad"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-lock"></i>
+                    <span>Seguridad</span>
+                </a>
+                <div id="collapseSeguridad" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Funcionalidades</h6>
+                        <a class="collapse-item" href="<?=base_url;?>/Usuarios">Usuarios</a>
+                        <a class="collapse-item" href="<?=base_url;?>/Cajas">Cajas</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseVentas"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Ventas</span>
+                </a>
+                <div id="collapseVentas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Funcionalidades</h6>
+                        <a class="collapse-item" href="<?=base_url;?>/Clientes">Clientes</a>
+                        <a class="collapse-item" href="<?=base_url;?>/TipoDocumentos">Tipos documento</a>
+                        <a class="collapse-item" href="<?=base_url;?>/Facturas">Facturas</a>
                     </div>
                 </div>
             </li>
@@ -108,7 +145,15 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nombre Usuario</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <?php 
+                                    if (isset($_SESSION['nombre'])) {
+                                        echo htmlspecialchars($_SESSION['nombre']);
+                                    } else {
+                                        echo "No autenticado";
+                                    }
+                                    ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="<?=base_url;?>/Assets/img/undraw_profile.svg">
                             </a>

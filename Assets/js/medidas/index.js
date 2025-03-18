@@ -1,19 +1,18 @@
-let tblUsuarios;
+let tblMedidas;
 $(document).ready(function() {
-        tblUsuarios = $('#tbUsuarios').DataTable({
+        tblCajas = $('#tbMedidas').DataTable({
             processing: true,
             serverSide: false,
             ajax: {
-                url: `${base_url}/Usuarios/listar`,
+                url: `${base_url}/Medidas/listar`,
                 type: 'POST',
                 dataSrc: '',
             },
             columns: [
-                { data: 'id_usuario' },
-                { data: 'nick' },
-                { data: 'nombre' },
-                { data: 'caja' },
-                { data: 'usuario_estado' },
+                { data: 'id_medida' },
+                { data: 'descripcion_medida' },
+                { data: 'descripcion_corta' },
+                { data: 'medida_estado' },
                 { data: 'acciones' }
             ],
             language: {
@@ -21,7 +20,5 @@ $(document).ready(function() {
             },
             responsive: true
     });
-    
-    
-    
 });
+

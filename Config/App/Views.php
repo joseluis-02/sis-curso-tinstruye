@@ -4,6 +4,7 @@ class Views {
         $controller = get_class($controller);
         if($controller == "Home"){
             $vista = "Views/".$vista.".php";
+            //$vista = "Views/".$vista.".php";
         }else{
             $vista = "Views/".$controller."/".$vista.".php";
         }

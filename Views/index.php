@@ -1,5 +1,5 @@
 <?php include_once './Views/templates/header.php'; ?>
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Home index</h1>
+<h1 class="h3 mb-4 text-gray-800">Bienvenido(a)</h1>
 
 <?php include_once './Views/templates/footer.php'; ?>

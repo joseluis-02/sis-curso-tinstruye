@@ -1,19 +1,17 @@
-let tblUsuarios;
+let tblCajas;
 $(document).ready(function() {
-        tblUsuarios = $('#tbUsuarios').DataTable({
+        tblCajas = $('#tbCajas').DataTable({
             processing: true,
             serverSide: false,
             ajax: {
-                url: `${base_url}/Usuarios/listar`,
+                url: `${base_url}/Cajas/listar`,
                 type: 'POST',
                 dataSrc: '',
             },
             columns: [
-                { data: 'id_usuario' },
-                { data: 'nick' },
-                { data: 'nombre' },
+                { data: 'id_caja' },
                 { data: 'caja' },
-                { data: 'usuario_estado' },
+                { data: 'caja_estado' },
                 { data: 'acciones' }
             ],
             language: {
@@ -21,7 +19,5 @@ $(document).ready(function() {
             },
             responsive: true
     });
-    
-    
-    
 });
+

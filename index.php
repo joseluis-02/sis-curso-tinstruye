@@ -1,6 +1,8 @@
 <?php
 // Iniciamos la sesión del sistema
-session_start();
+require_once 'Config/App/SessionHelper.php';
+require_once 'Config/Helpers.php';
+SessionHelper::start();
 //Cargamos las configuraciones para el sistema
 require_once 'Config/Config.php';
 $ruta = !empty($_GET['url']) ? $_GET['url'] : 'Home';

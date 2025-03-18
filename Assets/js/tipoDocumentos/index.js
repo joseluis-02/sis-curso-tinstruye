@@ -1,19 +1,18 @@
-let tblUsuarios;
+let tblTipoDocumentos;
 $(document).ready(function() {
-        tblUsuarios = $('#tbUsuarios').DataTable({
+        tblCajas = $('#tbTipoDocumentos').DataTable({
             processing: true,
             serverSide: false,
             ajax: {
-                url: `${base_url}/Usuarios/listar`,
+                url: `${base_url}/TipoDocumentos/listar`,
                 type: 'POST',
                 dataSrc: '',
             },
             columns: [
-                { data: 'id_usuario' },
-                { data: 'nick' },
+                { data: 'id_tipo_documento' },
+                { data: 'abreviado' },
                 { data: 'nombre' },
-                { data: 'caja' },
-                { data: 'usuario_estado' },
+                { data: 'estado' },
                 { data: 'acciones' }
             ],
             language: {
@@ -21,7 +20,5 @@ $(document).ready(function() {
             },
             responsive: true
     });
-    
-    
-    
 });
+

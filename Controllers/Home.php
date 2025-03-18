@@ -4,7 +4,10 @@ class Home extends Controller{
         parent::__construct();
     }
     public function index() {
+        $this->requireAuth();
+        //require '../Views/index.php';
         return $this->views->getView($this,'index');
+        //echo 'Hola';
     }
 }
 ?>

@@ -1,12 +1,11 @@
 <?php include_once './Views/templates/header.php'; ?>
-
 <!-- Modal -->
-<div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuarioCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="modalClienteCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-    <form id="frmUsuario">
+    <form id="frmCliente">
         <div class="modal-header">
-            <h5 class="modal-title" id="modalUsuarioLongTitle">Formulario de usuario</h5>
+            <h5 class="modal-title" id="modalClienteLongTitle">Formulario de cliente</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -14,34 +13,33 @@
         <div class="modal-body">
         
             <div class="form-group">
-                <label for="inputNombre">Nombres</label>
-                <input type="hidden" class="form-control" id="id_usuario" name="id_usuario" value="0" >
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba nombre y apellidos">
+                <label for="inputRazonSocial">Razón social</label>
+                <input type="hidden" class="form-control" id="id_cliente" name="id_cliente" value="0" >
+                <input type="text" class="form-control" id="razon_social" name="razon_social" placeholder="Razón social">
             </div>
             <div class="form-group">
-                <label for="inputNick">Nick</label>
-                <input type="text" class="form-control" id="nick" name="nick" placeholder="Escriba nick">
-            </div>
-            
-            <div id="filaClaves" class="form-row">
-                <div class="form-group col-md-6">
-                <label for="inputClave">Clave</label>
-                <input type="password" class="form-control" id="clave" name="clave">
-                </div>
-                <div class="form-group col-md-6">
-                <label for="inputClave2">Repita clave</label>
-                <input type="password" class="form-control" id="clave2" name="clave2">
-                </div>
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="cliente_email" name="cliente_email" placeholder="Email del cliente">
             </div>
             <div class="form-group">
                 <label for="inputCajas">Cajas</label>
-                <select id="id_caja" name="id_caja" class="form-control">
+                <select id="id_tipo_documento" name="id_tipo_documento" class="form-control">
                 <?php foreach ($data as $c) { ?>
-                    <option value="<?= htmlspecialchars($c['id_caja']) ?>">
-                        <?= htmlspecialchars($c['caja'] ?? 'Sin nombre') ?>
+                    <option value="<?= htmlspecialchars($c['id_tipo_documento']) ?>">
+                        <?= htmlspecialchars($c['abreviado'] ?? 'Sin nombre') ?>
                     </option>
                 <?php } ?>
                 </select>
+            </div>
+            <div id="filaClaves" class="form-row">
+                <div class="form-group col-md-6">
+                <label for="inputDocumentoId">Código documento</label>
+                <input type="text" class="form-control" id="documentoid" name="documentoid" placeholder="Escriba código documento">
+                </div>
+                <div class="form-group col-md-6">
+                <label for="inputComplementoId">Código complemento</label>
+                <input type="text" class="form-control" id="complementoid" name="complementoid" placeholder="Escriba código complemento">
+                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -63,12 +61,11 @@
     </div>
   </div>
 </div>
-
 <!-- Page Heading -->
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lista de usuarios</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Lista de clientes</h6>
         <div class="d-flex flex-row-reverse">
             <button onclick="openModal()" class="btn btn-primary btn-icon-split">
                 <span class="icon text-gray-600">
@@ -80,13 +77,15 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="tbUsuarios" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="tbClientes" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nick</th>
-                        <th>Nombre</th>
-                        <th>Caja</th>
+                        <th>Razón social</th>
+                        <th>Tipo documento</th>
+                        <th>Documento</th>
+                        <th>Complemento</th>
+                        <th>Email</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -94,9 +93,11 @@
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Nick</th>
-                        <th>Nombre</th>
-                        <th>Caja</th>
+                        <th>Razón social</th>
+                        <th>Tipo documento</th>
+                        <th>Documento</th>
+                        <th>Complemento</th>
+                        <th>Email</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -110,9 +111,9 @@
 </div>
 <?php
 $scripts = [
-    base_url.'/Assets/js/usuarios/index.js',
-    base_url.'/Assets/js/usuarios/crear_o_actualizar.js',
-    base_url.'/Assets/js/usuarios/activar_o_inactivar.js',
+    base_url.'/Assets/js/clientes/index.js',
+    base_url.'/Assets/js/clientes/crear_o_actualizar.js',
+    base_url.'/Assets/js/clientes/activar_o_inactivar.js',
 ];
 include_once './Views/templates/footer.php'; 
 ?>

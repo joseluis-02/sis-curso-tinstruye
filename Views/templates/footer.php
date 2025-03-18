@@ -39,7 +39,7 @@ aria-hidden="true">
 <div class="modal-body">Estás seguro(a) de cerrar el sistema</div>
 <div class="modal-footer">
     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-    <a class="btn btn-primary" href="login.html">Logout</a>
+    <a class="btn btn-primary" href="<?=base_url?>/Auth/salir">Logout</a>
 </div>
 </div>
 </div>
@@ -52,20 +52,23 @@ aria-hidden="true">
 <!-- Core plugin JavaScript-->
 <script src="<?php echo base_url; ?>/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
+<!-- Sb admin2-->
 <script src="<?php echo base_url; ?>/Assets/js/sb-admin-2.min.js"></script>
 
 
 
-<!-- Page level plugins -->
+<!-- Page level plugins Datatables -->
 <script src="<?php echo base_url; ?>/Assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url; ?>/Assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Sweetalert 2-->
+<script src="<?php echo base_url; ?>/Assets/js/sweetalert2.all.min.js"></script>
 
 
 <script>
 const base_url = "<?php echo base_url; ?>";
 </script>
-<!-- Espacio dinámico para scripts -->
+<!-- Espacio dinámico para js -->
 <?php
 if (!empty($scripts)) {
     foreach ($scripts as $script) {

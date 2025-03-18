@@ -1,19 +1,21 @@
-let tblUsuarios;
+let tblClientes;
 $(document).ready(function() {
-        tblUsuarios = $('#tbUsuarios').DataTable({
+        tblUsuarios = $('#tbClientes').DataTable({
             processing: true,
             serverSide: false,
             ajax: {
-                url: `${base_url}/Usuarios/listar`,
+                url: `${base_url}/Clientes/listar`,
                 type: 'POST',
                 dataSrc: '',
             },
             columns: [
-                { data: 'id_usuario' },
-                { data: 'nick' },
-                { data: 'nombre' },
-                { data: 'caja' },
-                { data: 'usuario_estado' },
+                { data: 'id_cliente' },
+                { data: 'razon_social' },
+                { data: 'tipo_documento' },
+                { data: 'documentoid' },
+                { data: 'complementoid' },
+                { data: 'cliente_email' },
+                { data: 'cliente_estado' },
                 { data: 'acciones' }
             ],
             language: {
@@ -21,7 +23,4 @@ $(document).ready(function() {
             },
             responsive: true
     });
-    
-    
-    
 });
