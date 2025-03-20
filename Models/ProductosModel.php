@@ -8,5 +8,10 @@ class ProductosModel extends Query{
         $query = $this->selectAll($sql);
         return $query;
     }
+    public function buscarProducto(string $code){
+        $sql = "SELECT * FROM `productos` WHERE codigo='".$code."'";
+        $query = $this->select($sql);
+        return $query;
+    }
 }
 ?>

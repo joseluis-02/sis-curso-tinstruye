@@ -29,6 +29,11 @@ class ClientesModel extends Query{
         $query = $this->select($sql);
         return $query;
     }
+    public function buscarCliente(string $nitci){
+        $sql = "SELECT * FROM `clientes` WHERE documentoid='".$nitci."'";
+        $query = $this->select($sql);
+        return $query;
+    }
     public function cambiarEstadoCliente(int $id, int $estado) {
         $sql = "UPDATE `clientes` SET `cliente_estado`= ? WHERE id_cliente= ?";
         $query = $this->update($sql,[$estado,$id]);

@@ -19,5 +19,17 @@ class Productos extends Controller{
         echo json_encode($data,JSON_UNESCAPED_UNICODE);
         exit();
     }
+    public function buscar(string $code){
+        try{
+            $data = $this->model->buscarProducto($code);
+            if($data){
+                echo json_encode(['success' => true, 'message' => 'Se obtuvo los datos', 'data'=>$data]);
+            } else{ 
+                echo json_encode(['success' => false, 'message' => 'No hay registro de producto con ese código "'.$code.'"']);
+            }
+        }catch(Exception $e){
+            echo json_encode(['success' => false, 'message' => 'Error inesperado: '.$e]);
+        }
+    }
 }
 ?>

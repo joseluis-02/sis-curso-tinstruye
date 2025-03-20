@@ -20,7 +20,12 @@ class Facturas extends Controller{
         exit();
     }
     public function nuevo_pedido() {
+        $this->requireAuth();
         $this->views->getView($this,'nuevo_pedido');
+    }
+    public function buscar_cliente(){
+        $doc = $_POST['doc'];
+        echo json_encode('Hola');
     }
 }
 ?>

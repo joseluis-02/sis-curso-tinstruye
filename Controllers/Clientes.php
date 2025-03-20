@@ -71,6 +71,18 @@ class Clientes extends Controller{
             echo json_encode(['success' => false, 'message' => 'Error inesperado: '.$e]);
         }
     }
+    public function buscar(string $nitci){
+        try{
+            $data = $this->model->buscarCliente($nitci);
+            if($data){
+                echo json_encode(['success' => true, 'message' => 'Se obtuvo los datos', 'data'=>$data]);
+            } else{ 
+                echo json_encode(['success' => false, 'message' => 'No hay registro de cliente con ese código "'.$nitci.'"']);
+            }
+        }catch(Exception $e){
+            echo json_encode(['success' => false, 'message' => 'Error inesperado: '.$e]);
+        }
+    }
     public function activar_o_inactivar(){
         try{
          // Obtener los parámetros desde la URL (GET)

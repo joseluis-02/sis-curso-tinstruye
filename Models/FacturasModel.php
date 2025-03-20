@@ -8,5 +8,10 @@ class FacturasModel extends Query{
     $query = $this->selectAll($sql);
     return $query;
    }
+   public function buscarCliente(string $doc) {
+      $sql = "select * from clientes where documentoid='".$doc."'";
+      $query = $this->select($sql);
+      return $query;
+   }
 }
 ?>
