@@ -7,7 +7,17 @@ include_once './Views/templates/header.php';
 
 <div class="container-fluid py-4">
         <div class="card mb-4">
+            <div class="card-header">
+            <div class="row mb-3">
+                <ul class="list-group col">
+                    <li class="list-group-item">Siat: <span id="badgeComuni" class="badge badge-danger">DESCONECTADO</span></li>
+                    <li class="list-group-item">Cuis: <span id="cuis" class="badge badge-info">NO HAY</span></li>
+                    <li class="list-group-item">Cufd: <span id="cufd" class="badge badge-info">NO HAY</span></li>
+                </ul>
+            </div>
+            </div>
             <div class="card-body">
+
                 <div class="row">
                     <!-- Invoice Number -->
                     <div class="col-md-3 mb-3">
@@ -149,6 +159,7 @@ include_once './Views/templates/header.php';
                         </tbody>
                     </table>
                 </div>
+                <button onclick="saveInvoice()" class="btn btn-primary">Validar Factura</button>
             </div>
         </div>
     </div>

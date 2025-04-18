@@ -29,6 +29,9 @@ let invoiceProducts = [];
 
 // Initialize the page
 function initPage() {
+    verficarComunicaion();
+    cufd();
+    cuis();
     // Populate the table with existing products
     renderProductTable();
     
@@ -335,6 +338,78 @@ function clearProductForm() {
 
 // Save invoice to server
 function saveInvoice() {
+    let nitEmisor = 415422420;
+    let razonSocialEmisor = 'Jose Luis Gutierrez';
+    let municipio = 'Tarija';
+    let telefono = '67851245';
+    let numeroFactura = 1;
+    let cuf = '';
+    let cufd = '';
+    let codigoSucursal = 0;
+    let direccion = 'Av. Colon y Circunvalacion';
+    let codigoPuntoVenta = 0;
+    let diferenciaHora = new Date().getTimezoneOffset() * 60000;
+    let fechaEmision = new Date(Date.now() - diferenciaHora).toISOString().slice(0,-1);
+    let nombreRazonSocial = "";
+    let codigoTipoDocumentoIdentidad = "";
+    let numeroDocumento = "";
+    let complemento = "";
+    let codigoCliente = ""; // Puede ser CI/NIT
+    let codigoMetodoPago = 1;
+    let numeroTarjeta = null;
+    let montoTotal = 0.00;
+    let montoTotalSujetoIva = 0.00;
+    let montoGifCard = null;
+    let descuentoAdicional = 0.00;
+    let codigoExepcion = 0; //
+    let cafc = null;
+    let codigoMoneda = 1;
+    let tipoCambio = 1;
+    let leyenda = '';
+    let usuario = 'leti';
+    let codigoDocumentoSector = 1;
+
+
+    console.log(fechaEmision);
+    var factura = [];
+    factura.push({
+        cabecera:{
+            razonSocialEmisor : razonSocialEmisor,
+            municipio :municipio,
+            telefono:telefono,
+            nitEmisor: nitEmisor,
+            numeroFactura: numeroFactura,
+            cuf : cuf,
+            codigoSucursal: codigoSucursal,
+            direccion:direccion,
+            codigoPuntoVenta:codigoPuntoVenta,
+            cufd:cufd,
+            diferenciaHora:diferenciaHora,
+            fechaEmision: fechaEmision,
+            nombreRazonSocial:nombreRazonSocial,
+            codigoTipoDocumentoIdentidad:codigoTipoDocumentoIdentidad,
+            numeroDocumento:numeroDocumento,
+            complemento:complemento,
+            codigoCliente:codigoCliente,
+            codigoMetodoPago:codigoMetodoPago,
+            numeroTarjeta:numeroTarjeta,
+            montoTotal:montoTotal,
+            montoTotalSujetoIva:montoTotalSujetoIva,
+            montoGifCard:montoGifCard,
+            descuentoAdicional:descuentoAdicional,
+            codigoExepcion:codigoExepcion,
+            cafc:cafc,
+            codigoMoneda:codigoMoneda,
+            tipoCambio:tipoCambio,
+            leyenda:leyenda,
+            usuario:usuario,
+            codigoDocumentoSector:codigoDocumentoSector
+        }
+    });
+
+
+
+    /*
     // Get invoice data
     const invoiceData = {
         invoiceNumber: invoiceNumberEl.value,
@@ -392,7 +467,61 @@ function saveInvoice() {
         showError('Network error. Please check your connection and try again.');
     };
     
-    xhr.send(JSON.stringify(invoiceData));
+    xhr.send(JSON.stringify(invoiceData));*/
+}
+
+function verficarComunicaion(){
+    $.ajax({
+        type:'POST',
+        url: `${base_url}/Facturas/verificarComunicacion`,
+        cache: false,
+        dataType: 'json',
+        success: function(data){
+            if(data!='WSDL'){
+                if(data.RespuestaComunicacion.transaccion==true){
+                    //colocar al input
+                    document.getElementById('badgeComuni').innerHTML = data.RespuestaComunicacion.mensajesList.descripcion;
+                    document.getElementById('badgeComuni').classList.remove('badge-danger');
+                    return;
+                }
+            }
+        }
+    });
+}
+function cuis(){
+    $.ajax({
+        type:'POST',
+        url: `${base_url}/Facturas/cuis`,
+        cache: false,
+        dataType: 'json',
+        success: function(data){
+            if(data!='WSDL'){
+                if(data.RespuestaCuis.transaccion==true || data.RespuestaCuis.mensajesList.codigo==980){
+                    //colocar al input
+                    console.log(data.RespuestaCuis.codigo);
+                    document.getElementById('cuis').innerHTML = data.RespuestaCuis.codigo;
+                    return;
+                }
+            }
+        }
+    });
+}
+function cufd(){
+    $.ajax({
+        type:'POST',
+        url: `${base_url}/Facturas/cufd`,
+        cache: false,
+        dataType: 'json',
+        success: function(data){
+            if(data!='WSDL'){
+                if(data.RespuestaCufd.transaccion==true){
+                    //colocar al input
+                    document.getElementById('cufd').innerHTML = data.RespuestaCufd.codigo;
+                    return;
+                }
+            }
+        }
+    });
 }
 
 // Clear entire invoice form

@@ -28,6 +28,9 @@ define('pass', getenv('DB_PASSWORD'));
 define('db', getenv('DB_NAME'));
 define('charset', getenv('DB_CHARSET'));
 define('base_url', getenv('BASE_URL'));
+// Definir constantes de Siat
+define('wsdl', getenv('WSDL_URL'));
+define('token', getenv('TOKEN'));
 
 define('app_env', getenv('APP_ENV'));
 define('app_debug', getenv('APP_DEBUG') === 'true');
